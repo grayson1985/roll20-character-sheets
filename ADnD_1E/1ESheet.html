@@ -1,7 +1,8 @@
 <div>
-  <input type="checkbox" class="sheet-toggle-type" name="npc-pc-toggle">NPC View
+  <input type="checkbox" class="sheet-toggle-type" name="npc-pc-toggle" title="@{use_npc_view}"
+    onclick="ShowHideDiv(this)">NPC View
 </div>
-<div class="sheet-useBackground pc-sheet">
+<div class="sheet-useBackground pc" id="pc-div">
 
   <!--background hidden inputs-->
   <input type="checkbox" class="sheet-useBackground" style="display:none;" name="attr_background" value="1" checked />
@@ -1106,7 +1107,87 @@
   </div>
 </div>
 
-<div class="sheet-useBackground npc-sheet"></div>
+<div class="sheet-useBackground npc" id="npc-div">
+  <section class="npc-common">
+    <div class="sheet-row">
+      <div class="sheet-col">
+        <label for="attr_npc_name">Name</label>
+        <input class="sheet-input-large" name="attr_npc_name" title="@{npc_name}" type="text">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_armor_class">Armor Class</label>
+        <input class="sheet-input-medium" name="attr_npc_armor_class" title="@{npc_armor_class}" type="number">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_movement">Move</label>
+        <input class="sheet-input-medium" name="attr_npc_movement" type="text" title="@{npc_movement}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_hit_dice">HD</label>
+        <input class="sheet-input-medium" name="attr_npc_hit_dice" type="text" title="@{npc_hit_dice}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_attacks">Attacks</label>
+        <input class="sheet-input-medium" name="attr_npc_attacks" type="text" title="@{npc_attacks}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_damage_per_attack">Damage per Attack</label>
+        <input class="sheet-input-medium" name="attr_npc_damage_per_attack" type="text"
+          title="@{npc_damage_per_attack}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_special_attacks">Special Attacks</label>
+        <input class="sheet-input-medium" name="attr_npc_special_attacks" type="text" title="@{npc_special_attacks}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_special_defenses">Special Defenses</label>
+        <input class="sheet-input-medium" name="attr_npc_special_defenses" type="text" title="@{npc_special_defenses}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_magic_resistance">Magic Resistance</label>
+        <input class="sheet-input-medium" name="attr_npc_magic_resistance" type="text" title="@{npc_magic_resistance}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_intelligence">Intelligence</label>
+        <input class="sheet-input-medium" name="attr_npc_intelligence" type="text" title="@{npc_intelligence}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_alignment">Alignment</label>
+        <select class="sheet-input-medium" name="attr_npc_alignment" title="@{npc_alignment}">
+          <option value="LG">LG</option>
+          <option value="LN">LN</option>
+          <option value="LE">LE</option>
+          <option value="NG">NG</option>
+          <option value="N">N</option>
+          <option value="NE">NE</option>
+          <option value="CG">CG</option>
+          <option value="CN">CN</option>
+          <option value="CE">CE</option>
+        </select>
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_size">Size</label>
+        <input class="sheet-input-medium" name="attr_npc_size" type="text" title="@{npc_size}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_psionic_ability">Psionic Ability</label>
+        <input class="sheet-input-medium" name="attr_psionic_ability" type="text" title="@{npc_psionic_ability}">
+      </div>
+      <div class="sheet-col">
+        <label for="attr_npc_attack_defense_modes">Attack/Defense Modes</label>
+        <input class="sheet-input-medium" name="attr_npc_attack_defense_modes" type="text"
+          title="@{npc_attack_defense_modes}">
+      </div>
+    </div>
+    <div class="sheet-row">
+      <div class="sheet-col">
+        <label for="attr_npc_description">Description</label>
+        <textarea class="sheet-input-medium" name="attr_npc_description" type="text"
+          title="@{npc_description}"></textarea>
+      </div>
+    </div>
+  </section>
+</div>
 
 <div class="sheet-roll_templates">
   <!-- Attack Roll Template -->
@@ -1250,6 +1331,15 @@
   </rolltemplate>
 </div>
 
+<script type="text/javascript">
+  function ShowHideDiv(chkNPC) {
+    var dvNPC = document.getElementById("npc-div");
+    var dvPC = document.getElementById("pc-div");
+
+    dvNPC.style.display = chkNPC.checked ? "block" : "none";
+    dvPC.style.display = chkNPC.checked ? "none" : "block";
+  }
+</script>
 
 <script type="text/worker">
 	// type="text/worker"
@@ -1852,5 +1942,7 @@
 					});
 			});
 	};
+
+
 
 </script>
